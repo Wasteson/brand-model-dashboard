@@ -1,0 +1,95 @@
+---
+title: "Brand & Model Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(scales)
+library(flexdashboard)
+library(knitr)
+library(tidytext)
+```
+
+```{r}
+# Les inn data og gjør klar
+df <- read_csv("brand_model_data.csv") %>%
+  filter(!is.na(model), model != "", toupper(model) != "OTHERS") %>%
+  mutate(
+    country_full = if_else(country_code == 0, "Denmark", country_full),
+    country_full = str_to_title(country_full)
+  ) %>%
+  group_by(country_full, brand, model) %>%
+  summarise(num_ads = sum(num_ads), .groups = "drop")
+
+# Topp 8 land og 10 merker
+top_countries <- df %>%
+  group_by(country_full) %>%
+  summarise(total = sum(num_ads), .groups = "drop") %>%
+  arrange(desc(total)) %>%
+  slice_head(n = 8) %>%
+  pull(country_full)
+
+top_brands <- df %>%
+  group_by(brand) %>%
+  summarise(total = sum(num_ads), .groups = "drop") %>%
+  arrange(desc(total)) %>%
+  slice_head(n = 10) %>%
+  pull(brand)
+```
+
+Column {data-width=700}
+-----------------------------------------------------------------------
+
+### Top 10 Brands – Market Share by Country
+
+```{r}
+df_brand_country <- df %>%
+  filter(country_full %in% top_countries, brand %in% top_brands) %>%
+  group_by(country_full, brand) %>%
+  summarise(num_ads = sum(num_ads), .groups = "drop") %>%
+  group_by(country_full) %>%
+  mutate(pct = num_ads / sum(num_ads)) %>%
+  ungroup()
+
+```{r fig.height=7}
+ggplot(df_brand_country, aes(x = pct, y = reorder_within(brand, pct, country_full), fill = brand)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ country_full, ncol = 2, scales = "free_y") +
+  scale_x_continuous(labels = percent_format()) +
+  scale_y_reordered() +
+  labs(
+    title = "Top 10 Brands – Market Share by Country",
+    x = "Marketshare",
+    y = NULL
+  ) +
+  theme_minimal()
+```
+
+### Top 5 Models for Each of the 10 Largest Brands
+
+```{r}
+df_model_brand <- df %>%
+  filter(brand %in% top_brands) %>%
+  group_by(brand, model) %>%
+  summarise(num_ads = sum(num_ads), .groups = "drop") %>%
+  arrange(brand, desc(num_ads)) %>%
+  group_by(brand) %>%
+  slice_head(n = 5) %>%
+  ungroup()
+
+```{r fig.height=7}
+ggplot(df_model_brand, aes(x = num_ads, y = fct_reorder(model, num_ads), fill = brand)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ brand, ncol = 2, scales = "free_y") +
+  scale_x_continuous(labels = comma) +
+  labs(
+    title = "Top 5 Models for Each of the 10 Largest Brands",
+    x = "Number of Ads",
+    y = NULL
+  )
+```
