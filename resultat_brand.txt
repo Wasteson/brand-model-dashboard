@@ -1,0 +1,37 @@
+Resultater – Brand-analyse
+Tema: Merker og modeller i det europeiske bruktbilmarkedet
+Datagrunnlag: Aggregert annonsevolum for de 10 største bilmerkene og deres toppmodeller i 8 europeiske markeder
+ 
+Figur 1: Markedsandel for topp 10 bilmerker per land
+🔍 Beskrivelse:
+Figuren visualiserer hvor stor andel hvert av de 10 mest annonserte bilmerkene har i hvert av de åtte største europeiske bruktbilmarkedene (AT, BE, DK, FR, DE, IT, NL, ES). Søylene viser relative andeler per land, med merkene sortert etter volum.
+Innsikter:
+•	Volkswagen (VW) er klart ledende i Østerrike, Tyskland, Danmark og Nederland.
+•	Mercedes-Benz, BMW og Audi har jevn og høy tilstedeværelse på tvers av markeder – særlig i Belgia, Nederland og Tyskland – og bekrefter premiumsegmentets styrke i sentrale Europa.
+•	FIAT dominerer i Italia, som forventet, men er marginal i andre land.
+•	Peugeot og Renault har sterk regional tilstedeværelse i Frankrike og Spania – tydelige nasjonale preferanser.
+•	Toyota opptrer stabilt i topp 10 i alle land, men uten å toppe noe marked – antyder bred, men ikke dominerende appell.
+Tolkning:
+Bruktmarkedet i Europa viser et mønster av både geografisk merkelojalitet og pan-europeiske merkeledere. VW er en strukturell leder på tvers av markedene, mens enkelte nasjonale merker er sterkt avhengige av eget hjemmemarked. Premiumsegmentet er mer jevnt fordelt enn man kunne anta.
+ 
+Figur 2: Topp 5 modeller per brand (10 største merker)
+🔍 Beskrivelse:
+Figuren viser de fem mest annonserte modellene for hvert av de 10 største merkene, aggregert på tvers av alle land. Antall annonser brukes som indikator på modellens relative markedsposisjon innen hvert brand.
+Innsikter:
+•	VW Golf og VW Polo utmerker seg som markante volumdrivere i VW-porteføljen.
+•	Peugeot 208, Renault Clio og Ford Focus viser sterk ytelse som prisgunstige småbiler – ofte nummer én innen sitt merke.
+•	BMW har en balanse mellom sportslige modeller (3-serie) og SUV-er (X1, X3).
+•	Mercedes-Benz viser bredde, med både personbiler (A-Klasse, C 220) og varebiler (Sprinter, Vito).
+•	Toyota fokuserer på drivstoffeffektive modeller – Yaris, Corolla – og signaliserer en miljøprofil.
+•	Flere merker (som Fiat og Opel) har høy konsentrasjon rundt én eller to modeller.
+Tolkning:
+Modellbildet avslører tydelige forbruksmønstre: etterspørselen konsentreres rundt kompaktbiler og små SUV-er. Dette speiler trolig urbanisering, praktiske behov og økonomisk bevissthet. Modellmangfoldet innen merkene varierer – noen bygger på én storselger, andre dekker bredere segmenter.
+ 
+Strategisk helhetsinnsikt
+🔍 Strukturelle mønstre i bruktmarkedet:
+•	VW fremstår som pan-europeisk leder, både i merkeandel og modellvolum.
+•	Nasjonale preferanser er tydelige, men ikke enerådende – flere merker (f.eks. Mercedes og BMW) har bred appell.
+•	Markedene er like og ulike på én gang – ulik merkeandel per land, men mange av de samme modellene dominerer på tvers.
+•	Modellpreferanser peker mot kompaktklassen (B- og C-segmentet) og små SUV-er – reflekterer etterspørsel etter økonomiske, fleksible biler.
+
+
