@@ -1,12 +1,17 @@
 # SQL ->
 
--- Lookup for landnavn
+-- 🔍 Lookup for landnavn, med override for country_code = 0 → Denmark
 WITH country_lookup AS (
-  SELECT country_code, comment AS country_full
+  SELECT
+  country_code,
+  CASE
+  WHEN country_code = 0 THEN 'Denmark'
+  ELSE comment
+  END AS country_full
   FROM `imposing-yen-426717-u4.enum_lookup_tables.countries`
 ),
 
--- Mobile + Autoscout med bruktfilter
+-- 📦 Mobile.de + AutoScout, bruktfilter
 base_data AS (
   SELECT
   'mobile' AS source,
@@ -21,7 +26,7 @@ base_data AS (
   UNION ALL
   
   SELECT
-  'autoscout',
+  'autoscout' AS source,
   sellerCountry AS country_code,
   make AS brand,
   model
@@ -31,7 +36,7 @@ base_data AS (
   AND (firstRegistration IS NOT NULL OR mileage > 100)
 ),
 
--- Bilinfo med bruktfilter basert på kjørelengde
+-- 📦 Bilinfo (DK, bruktbiler)
 bilinfo_data AS (
   SELECT
   'bilinfo' AS source,
@@ -44,14 +49,14 @@ bilinfo_data AS (
   AND Mileage > 100
 ),
 
--- Kombiner alle datakilder
+-- 📦 Kombiner alle datakilder
 all_data AS (
   SELECT * FROM base_data
   UNION ALL
   SELECT * FROM bilinfo_data
 ),
 
--- Aggreger per brand/model/land
+-- 📦 Aggreger per brand/model/land
 brand_model_counts AS (
   SELECT
   country_code,
@@ -62,7 +67,7 @@ brand_model_counts AS (
   GROUP BY country_code, brand, model
 ),
 
--- Totalannonser per land
+-- 📦 Totalannonser per land
 total_per_country AS (
   SELECT
   country_code,
@@ -71,7 +76,7 @@ total_per_country AS (
   GROUP BY country_code
 ),
 
--- Sluttresultat
+-- 📦 Sluttresultat
 final AS (
   SELECT
   bmc.country_code,
@@ -86,9 +91,12 @@ final AS (
   WHERE tpc.total_ads >= 1000
 )
 
+-- 📦 Output
 SELECT *
   FROM final
 ORDER BY total_ads DESC, country_full, num_ads DESC;
+
+
 
 
 # -------
@@ -118,7 +126,8 @@ library(tidytext)  # For reorder_within() og scale_y_reordered()
 
 
 # 1. Les inn datasettet
-df <- read_csv("brand_model_data.csv")
+df <- read_csv("/Users/oystein/Desktop/wasteson/TrackSights/datating/looker/bigquery_3 auto merke og model analyse/brand_model_data.csv")
+
 
 # 2. Rens modellnavn og land
 df <- df %>%
