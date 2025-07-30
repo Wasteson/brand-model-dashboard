@@ -10,6 +10,7 @@ suppressPackageStartupMessages({
   library(scales)
   library(forcats)
   library(stringr)
+  library(tidytext)
 })
 
 # --- Logging ---
