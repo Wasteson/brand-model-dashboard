@@ -124,7 +124,7 @@ tryCatch({
     facet_wrap(~ country_full, scales = "free_y") +
     scale_x_continuous(labels = percent_format()) +
     scale_y_reordered() +
-    labs(title = "Top 10 Brands – Market Share by Country", x = "Markedsandel", y = NULL) +
+    labs(title = "Top 10 Brands - Market Share by Country", x = "Markedsandel", y = NULL) +
     theme_dark_custom
   ggsave(filename = png_brand_path, plot = p1, width = 12, height = 8, dpi = 300, bg = "black")
   

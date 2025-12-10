@@ -237,7 +237,7 @@ ggplot(df_brand_country, aes(x = pct, y = reorder_within(brand, pct, country_ful
   scale_x_continuous(labels = percent_format()) +
   scale_y_reordered() +
   labs(
-    title = "Top 10 Brands – Market Share by Country",
+    title = "Top 10 Brands - Market Share by Country",
     x = "Markedsandel",
     y = NULL
   ) +
